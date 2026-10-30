@@ -3,7 +3,7 @@ import image from '../assets/logo.png'
 import { Link } from 'react-router-dom'
 function Navbar(){
     return (
-        <nav className="border -2 rounded-xl flex justify-between items-center px-4 bg-[#2C4179] m-3">
+        <nav className="relative border -2 rounded-xl flex justify-between items-center px-4 bg-[#2C4179] m-3">
             {/* left side */}
             <div>
                 <img src={image} className='w-30'/>
