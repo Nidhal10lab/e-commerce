@@ -4,6 +4,7 @@ import Features from "../components/Features"
 import Category from "../components/Category"
 import Offer from "../components/Offer"
 import Arrivals from "../components/Arrivals"
+import Footer from "../components/Footer"
 function Home(){
     return (
         <>
@@ -13,6 +14,7 @@ function Home(){
         <Category/>
         <Offer/>
         <Arrivals/>
+        <Footer/>
         </>
     )
 }
