@@ -11,7 +11,6 @@ const STATUS_COLORS = {
   Delivered: 'bg-green-100 text-green-700',
   Cancelled: 'bg-red-100 text-red-700',
 }
-
 function Orders() {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
