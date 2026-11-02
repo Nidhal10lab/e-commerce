@@ -1,13 +1,14 @@
 import {Routes,Route,Navigate} from 'react-router-dom'
-import Home from './pages/Home'
+// import Home from './pages/Home'
 // import Products from './pages/Products'
 // import Cart from './pages/Cart'
-// import Login from './authentication/Login'
+import Login from './authentication/Login'
 // import Register from './authentication/Registration'
 
 function App(){
   return (
-    <Home/>
+    // <Home/>
+    <Login/>
     // <Routes>
       // <Route path="/" element={<Home/>}/> 
     //   <Route path='/products' element={<Products/>}/>
