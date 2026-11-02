@@ -1,5 +1,4 @@
 import api from './api'
-
 export const orderService = {
   // Place a new order
   create: (orderData) => api.post('/orders', orderData),
