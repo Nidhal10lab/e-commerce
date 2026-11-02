@@ -4,7 +4,6 @@ import { addToCart } from '../redux/cartSlice'
 import { Heart, ShoppingCart, Trash2, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-
 function Wishlist() {
   const dispatch = useDispatch()
   const { items } = useSelector(state => state.wishlist)
