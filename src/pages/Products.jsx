@@ -7,7 +7,6 @@ import { fetchProducts } from '../redux/productsSlice'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const ITEMS_PER_PAGE = 6
-
 const CATEGORIES = ['All', 'Memory Foam', 'Latex', 'Foam', 'Orthopedic', 'Pillow']
 
 const SORT_OPTIONS = [
