@@ -1,66 +1,65 @@
-
 import bed from '../assets/bedimg.jpg'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import api from '../services/api'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginSuccess } from '../redux/authSlice'
+import { userService } from '../services/userService'
 
 function Login() {
-
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
+  const location = useLocation()
+  const dispatch = useDispatch()
+  const { isAuthenticated } = useSelector(state => state.auth)
+
+  // Return to original page after login
+  const from = location.state?.from
+    ? (location.state.from.pathname + (location.state.from.search || ''))
+    : '/'
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true })
+    }
+  }, [isAuthenticated, navigate, from])
 
   async function handleLogin(e) {
     e.preventDefault()
-
-    setError("")
+    setError('')
 
     try {
       setLoading(true)
 
-      // 1. Find user using email
-      const response = await api.get('/users', {
-        params: {
-          email: email.trim().toLowerCase()
-        }
-      })
+      const response = await userService.getByEmail(email)
 
-      // 2. Check whether user exists
       if (response.data.length === 0) {
-        setError("Account does not exist. Please register.")
+        setError('Account does not exist. Please register.')
         return
       }
 
-      // 3. Get user details
       const user = response.data[0]
 
-      // 4. Check password
       if (user.password !== password) {
-        setError("Incorrect password. Please try again.")
+        setError('Incorrect password. Please try again.')
         return
       }
 
-      // 5. Save logged-in user (demo session)
       const loggedInUser = {
         id: user.id,
         name: user.name,
-        email: user.email
+        email: user.email,
       }
 
-      localStorage.setItem(
-        'fyniUser',
-        JSON.stringify(loggedInUser)
-      )
-
-      // 6. Navigate to home
-      navigate('/home')
+      dispatch(loginSuccess(loggedInUser))
+      navigate(from, { replace: true })
 
     } catch (err) {
-      setError("Something went wrong. Please try again.")
-      console.log(err)
+      setError('Something went wrong. Please try again.')
+      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -68,7 +67,6 @@ function Login() {
 
   return (
     <div className="min-h-screen bg-[#F7F5F0] flex items-center justify-center p-5 md:p-10">
-
       <div className="w-full max-w-6xl min-h-[600px] grid grid-cols-1 md:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-xl">
 
         {/* Left Side */}
@@ -76,11 +74,9 @@ function Login() {
           className="hidden md:flex relative bg-cover bg-center"
           style={{ backgroundImage: `url(${bed})` }}
         >
-
           <div className="absolute inset-0 bg-[#263D70]/30"></div>
 
           <div className="relative z-10 flex flex-col justify-end p-12 text-white">
-
             <p className="text-sm uppercase tracking-[4px] mb-4">
               Experience Better Sleep
             </p>
@@ -94,7 +90,6 @@ function Login() {
               Discover the perfect balance of comfort and support.
               Because better days begin with better nights.
             </p>
-
           </div>
         </div>
 
@@ -103,7 +98,6 @@ function Login() {
 
           {/* Brand */}
           <div className="mb-10 text-center">
-
             <h1 className="text-4xl font-serif font-bold tracking-widest text-[#263D70]">
               FYNI
             </h1>
@@ -111,12 +105,10 @@ function Login() {
             <p className="text-xs tracking-[4px] text-gray-500 mt-2">
               SLEEP BETTER. LIVE BETTER.
             </p>
-
           </div>
 
           {/* Heading */}
           <div className="w-full max-w-sm mb-8">
-
             <h2 className="text-3xl font-serif text-[#263D70]">
               Welcome Back
             </h2>
@@ -124,7 +116,6 @@ function Login() {
             <p className="text-gray-500 text-sm mt-2">
               Login to your account to continue.
             </p>
-
           </div>
 
           {/* Form */}
@@ -132,7 +123,6 @@ function Login() {
             onSubmit={handleLogin}
             className="w-full max-w-sm space-y-5"
           >
-
             {/* Email */}
             <div>
               <label className="block text-sm font-medium text-[#263D70] mb-2">
@@ -178,14 +168,12 @@ function Login() {
               disabled={loading}
               className="w-full bg-[#263D70] text-white py-3 rounded-xl text-sm font-medium tracking-wide hover:bg-[#1d305a] transition duration-300 shadow-md disabled:opacity-60"
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
-
           </form>
 
           {/* Register */}
           <div className="mt-8 text-sm text-gray-500">
-
             Don't have an account?
 
             <Link
@@ -194,14 +182,12 @@ function Login() {
             >
               Create Account
             </Link>
-
           </div>
 
           {/* Footer */}
           <p className="mt-12 text-xs text-gray-400">
             © 2026 FYNI Mattress. All rights reserved.
           </p>
-
         </div>
       </div>
     </div>

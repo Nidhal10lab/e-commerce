@@ -1,65 +1,62 @@
-
 import bed from '../assets/bedimg.jpg'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import api from '../services/api'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { userService } from '../services/userService'
 
 function Register() {
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [cpassword, setCpassword] = useState("")
-  const [error, setError] = useState("")
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [cpassword, setCpassword] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
+  const { isAuthenticated } = useSelector(state => state.auth)
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true })
+    }
+  }, [isAuthenticated, navigate])
 
   async function handleRegister(e) {
     e.preventDefault()
+    setError('')
 
-    setError("")
-
-    // 1. Check password length
     if (password.length < 6) {
-      setError("Password must contain at least 6 characters")
+      setError('Password must contain at least 6 characters')
       return
     }
 
-    // 2. Check whether passwords match
     if (password !== cpassword) {
-      setError("Passwords do not match")
+      setError('Passwords do not match')
       return
     }
 
     try {
       setLoading(true)
 
-      // 3. Check whether email already exists
-      const response = await api.get('/users', {
-        params: {
-          email: email.trim().toLowerCase()
-        }
-      })
+      const response = await userService.getByEmail(email)
 
       if (response.data.length > 0) {
-        setError("Email already registered. Please login.")
+        setError('Email already registered. Please login.')
         return
       }
 
-      // 4. Save new user in db.json
-      await api.post('/users', {
+      await userService.register({
         name: name.trim(),
         email: email.trim().toLowerCase(),
-        password: password
+        password: password,
       })
 
-      // 5. Navigate to login
       navigate('/login')
 
     } catch (err) {
-      setError("Something went wrong. Please try again.")
-      console.log(err)
+      setError('Something went wrong. Please try again.')
+      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -202,7 +199,7 @@ function Register() {
               disabled={loading}
               className="w-full bg-[#263D70] text-white py-3 rounded-xl text-sm font-medium tracking-wide hover:bg-[#1d305a] transition duration-300 shadow-md disabled:opacity-60"
             >
-              {loading ? "Creating Account..." : "Create Account"}
+              {loading ? 'Creating Account...' : 'Create Account'}
             </button>
 
           </form>

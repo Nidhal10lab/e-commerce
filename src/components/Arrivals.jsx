@@ -40,7 +40,7 @@ return (
     Our New Arrivals
   </h1>
 
-<Link to='products' className="rounded-full bg-[#F7F5F0] px-6 py-3 font-['Poppins'] text-xl text-black transition-all duration-300 hover:bg-[#D6B982]">
+<Link to="/products" className="rounded-full bg-[#F7F5F0] px-6 py-3 font-['Poppins'] text-xl text-black transition-all duration-300 hover:bg-[#D6B982]">
     Explore more →</Link>
 </div>
 

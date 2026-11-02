@@ -5,12 +5,6 @@
       "name": "Test User",
       "email": "test@gmail.com",
       "password": "123456"
-    },
-    {
-      "name": "aaaa",
-      "email": "aa@gmail.com",
-      "password": "123456",
-      "id": "Yb2lFxvxX_U"
     }
   ],
   "products": [
@@ -18,51 +12,257 @@
       "id": "1",
       "name": "Fyni Comfort Mattress",
       "category": "Memory Foam",
-      "description": "Experience premium comfort and excellent body support.",
+      "description": "Experience premium comfort and excellent body support with our specially engineered memory foam mattress. Perfect for all sleep positions.",
       "price": 12999,
       "originalPrice": 15999,
-      "image": "/assets/mattress1.jpg",
-      "size": [
+      "image": "/images/mattress.jpg",
+      "sizes": [
         "Single",
         "Queen",
         "King"
       ],
       "stock": 20,
       "rating": 4.5,
-      "featured": true
+      "featured": true,
+      "features": [
+        "Memory Foam",
+        "Body Support",
+        "Pressure Relief"
+      ]
     },
     {
       "id": "2",
       "name": "Fyni Luxury Mattress",
       "category": "Latex",
-      "description": "Enjoy luxurious comfort and restful sleep every night.",
+      "description": "Enjoy luxurious comfort and restful sleep every night with our premium latex mattress that provides superior bounce and breathability.",
       "price": 18999,
       "originalPrice": 21999,
-      "image": "/assets/mattress2.jpg",
-      "size": [
+      "image": "/images/mattress.jpg",
+      "sizes": [
         "Queen",
         "King"
       ],
       "stock": 15,
       "rating": 4.8,
-      "featured": true
+      "featured": true,
+      "features": [
+        "Natural Latex",
+        "Breathable",
+        "Hypoallergenic"
+      ]
     },
     {
       "id": "3",
       "name": "Fyni Classic Mattress",
       "category": "Foam",
-      "description": "Everyday comfort designed for quality sleep.",
+      "description": "Everyday comfort designed for quality sleep. Our classic foam mattress offers reliable support at an affordable price.",
       "price": 8999,
       "originalPrice": 10999,
-      "image": "/assets/mattress3.jpg",
-      "size": [
+      "image": "/images/mattress.jpg",
+      "sizes": [
         "Single",
         "Queen",
         "King"
       ],
       "stock": 30,
       "rating": 4.2,
-      "featured": false
+      "featured": false,
+      "features": [
+        "High Density Foam",
+        "Long Lasting",
+        "Easy Care"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Orthopedic Mattress",
+      "category": "Orthopedic",
+      "description": "Experience superior comfort and support with our orthopedic mattress. Designed to support your body and promote restful sleep.",
+      "price": 14999,
+      "originalPrice": 17999,
+      "image": "/images/ortho.png",
+      "sizes": [
+        "Single",
+        "Queen",
+        "King"
+      ],
+      "stock": 12,
+      "rating": 4.7,
+      "featured": true,
+      "features": [
+        "Back Support",
+        "Premium Foam",
+        "Long Lasting"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Multi-colored Pillow",
+      "category": "Pillow",
+      "description": "Add comfort and style to your sleeping space with our soft and comfortable pillows. Available in vibrant colors.",
+      "price": 999,
+      "originalPrice": 1499,
+      "image": "/images/multicolored.png",
+      "sizes": [
+        "Standard",
+        "King"
+      ],
+      "stock": 50,
+      "rating": 4.3,
+      "featured": false,
+      "features": [
+        "Soft Comfort",
+        "Premium Fabric",
+        "Easy Care"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Foldable Mattress",
+      "category": "Foam",
+      "description": "A convenient foldable mattress that combines comfort and flexibility. Perfect for everyday use and guests.",
+      "price": 4999,
+      "originalPrice": 6999,
+      "image": "/images/foldable.png",
+      "sizes": [
+        "Single",
+        "Double"
+      ],
+      "stock": 25,
+      "rating": 4.1,
+      "featured": false,
+      "features": [
+        "Space Saving",
+        "Easy Storage",
+        "Flexible Design"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Spine Alignment Pillow",
+      "category": "Pillow",
+      "description": "Designed to provide comfortable support and help maintain proper sleeping posture for a healthier spine.",
+      "price": 1499,
+      "originalPrice": 1999,
+      "image": "/images/spine.png",
+      "sizes": [
+        "Standard"
+      ],
+      "stock": 40,
+      "rating": 4.4,
+      "featured": false,
+      "features": [
+        "Neck Support",
+        "Ergonomic Design",
+        "Soft Material"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Orthopedic Pillow",
+      "category": "Pillow",
+      "description": "Enjoy a comfortable sleeping experience with supportive cushioning designed for everyday relaxation.",
+      "price": 1299,
+      "originalPrice": 1799,
+      "image": "/images/orthopillow.png",
+      "sizes": [
+        "Standard",
+        "King"
+      ],
+      "stock": 35,
+      "rating": 4.6,
+      "featured": false,
+      "features": [
+        "Body Support",
+        "Soft Feel",
+        "Premium Quality"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Fyni Comfort Mattress",
+          "selectedSize": "Single",
+          "quantity": 1,
+          "price": 12999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "jkvhkhvmkhkhk",
+        "address": "gyukgykgykgbkgyuky",
+        "city": "dtjtjtf",
+        "state": "jty",
+        "pincode": "ujtyujt"
+      },
+      "paymentMethod": "UPI",
+      "subtotal": 12999,
+      "shipping": 0,
+      "total": 12999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-02T06:05:07.814Z",
+      "id": "mo0i-XizeiM"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "3",
+          "productName": "Fyni Classic Mattress",
+          "selectedSize": "Single",
+          "quantity": 60,
+          "price": 8999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "283242364234",
+        "address": "sddfvgasd",
+        "city": "sfsdffsfwe",
+        "state": "sfew",
+        "pincode": "3428223"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 539940,
+      "shipping": 0,
+      "total": 539940,
+      "status": "Confirmed",
+      "placedAt": "2026-11-02T06:26:27.503Z",
+      "id": "Whb_7uVQ-BU"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Fyni Comfort Mattress",
+          "selectedSize": "Single",
+          "quantity": 1,
+          "price": 12999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "Sgfs",
+        "address": "gfsdgf",
+        "city": "sgfsdgf",
+        "state": "sds",
+        "pincode": "sgsdf"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 12999,
+      "shipping": 0,
+      "total": 12999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-02T07:03:58.338Z",
+      "id": "Z1P5zlfwxzk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

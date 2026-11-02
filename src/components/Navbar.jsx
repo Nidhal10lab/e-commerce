@@ -1,145 +1,138 @@
-
+import logo from '../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { Heart, ShoppingCart, UserRound, Package } from 'lucide-react'
+import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../redux/authSlice'
+import { clearWishlist } from '../redux/wishlistSlice'
+import { clearCart } from '../redux/cartSlice'
 
 function Navbar() {
-
-  const [user, setUser] = useState(null)
   const [showDropdown, setShowDropdown] = useState(false)
 
+  const { user, isAuthenticated } = useSelector(state => state.auth)
+  const wishlistItems = useSelector(state => state.wishlist.items)
+  const cartItems = useSelector(state => state.cart.items)
+
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // Check login status
-  useEffect(() => {
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
-    function checkUser() {
-      const loggedUser = localStorage.getItem('fyniUser')
-
-      setUser(loggedUser ? JSON.parse(loggedUser) : null)
-    }
-
-    checkUser()
-
-    // Listen for login/logout changes
-    window.addEventListener('authChanged', checkUser)
-
-    return () => {
-      window.removeEventListener('authChanged', checkUser)
-    }
-
-  }, [])
-
-  // Logout function
   function handleLogout() {
-
-    localStorage.removeItem('fyniUser')
-
-    window.dispatchEvent(new Event('authChanged'))
-
+    dispatch(logout())
+    dispatch(clearWishlist())
+    dispatch(clearCart())
     setShowDropdown(false)
-
     navigate('/')
-
   }
 
   return (
-
-    <nav className="flex justify-between items-center px-8 py-5 bg-[#F7F5F0]">
+    <nav className="relative border-2 rounded-xl flex justify-between items-center px-4 bg-[#2C4179] m-3 py-3">
 
       {/* Logo */}
-      <Link to="/" className="text-3xl font-serif font-bold tracking-widest text-[#263D70]">
-        FYNI
+      <Link to="/">
+        <img
+          src={logo}
+          alt="FYNI Logo"
+          className="w-30"
+        />
       </Link>
 
-      {/* Navigation Links */}
-      <div className="hidden md:flex gap-8 text-[#263D70] font-medium">
+      {/* Center Links */}
+      <div className="flex gap-6 text-white">
+        <Link to="/" className="hover:text-gray-300">
+          Home
+        </Link>
 
-        <Link to="/">Home</Link>
-        <Link to="/products">Shop</Link>
-        <Link to="/about">About Us</Link>
-        <Link to="/contact">Contact Us</Link>
+        <Link to="/products" className="hover:text-gray-300">
+          Shop
+        </Link>
 
+        <Link to="/#about" className="hover:text-gray-300">
+          About Us
+        </Link>
+
+        <Link to="/#contact" className="hover:text-gray-300">
+          Contact Us
+        </Link>
       </div>
 
-      {/* Right Side */}
-      <div className="flex items-center gap-5">
+      {/* Right Icons */}
+      <div className="flex items-center gap-4 text-white">
+
+        {/* Wishlist */}
+        <Link to="/wishlist" className="relative">
+          <Heart size={25} className="text-white" />
+
+          {wishlistItems.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-amber-400 text-[#263D70] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+              {wishlistItems.length}
+            </span>
+          )}
+        </Link>
+
+        {/* Cart */}
+        <Link to="/cart" className="relative">
+          <ShoppingCart size={25} className="cursor-pointer hover:text-gray-300" />
+
+          {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-amber-400 text-[#263D70] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+              {cartCount}
+            </span>
+          )}
+        </Link>
 
         {/* Account */}
         <div className="relative">
 
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-2 text-[#263D70] hover:opacity-70"
+            className="cursor-pointer"
           >
-
-            {/* User Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="8" r="4" />
-              <path d="M5 21a7 7 0 0 1 14 0" />
-            </svg>
-
-            <span className="hidden sm:block text-sm">
-              {user ? user.name : "Login"}
-            </span>
-
+            <UserRound
+              size={25}
+              className="hover:text-gray-300"
+            />
           </button>
 
-          {/* Dropdown */}
           {showDropdown && (
+            <div className="absolute right-0 top-10 w-56 bg-white text-[#263D70] rounded-xl shadow-lg border border-gray-200 z-50 p-4">
 
-            <div className="absolute right-0 top-12 w-52 bg-white shadow-xl rounded-xl border border-gray-100 z-50 p-3">
-
-              {user ? (
-
+              {isAuthenticated ? (
                 <>
+                  <p className="font-semibold text-sm">
+                    Welcome, {user?.name}
+                  </p>
 
-                  <div className="px-3 py-2 border-b border-gray-100">
+                  <p className="text-xs text-gray-500 mt-1 break-all">
+                    {user.email}
+                  </p>
 
-                    <p className="text-sm font-semibold text-[#263D70]">
-                      {user.name}
-                    </p>
-
-                    <p className="text-xs text-gray-500 mt-1 break-all">
-                      {user.email}
-                    </p>
-
-                  </div>
+                  <hr className="my-3" />
 
                   <Link
-                    to="/profile"
+                    to="/orders"
                     onClick={() => setShowDropdown(false)}
-                    className="block px-3 py-3 text-sm text-gray-700 hover:bg-gray-100 rounded-lg"
+                    className="flex items-center gap-2 text-sm hover:text-[#A47B3C] mb-3"
                   >
-                    My Account
+                    <Package size={15} />
+                    My Orders
                   </Link>
 
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-3 py-3 text-sm text-red-600 hover:bg-red-50 rounded-lg"
+                    className="w-full text-left text-sm text-red-600 hover:text-red-800"
                   >
                     Logout
                   </button>
-
                 </>
-
               ) : (
-
                 <>
-
                   <Link
                     to="/login"
                     onClick={() => setShowDropdown(false)}
-                    className="block px-3 py-3 text-sm text-[#263D70] hover:bg-gray-100 rounded-lg"
+                    className="block text-sm hover:text-gray-500"
                   >
                     Login
                   </Link>
@@ -147,25 +140,19 @@ function Navbar() {
                   <Link
                     to="/register"
                     onClick={() => setShowDropdown(false)}
-                    className="block px-3 py-3 text-sm text-[#263D70] hover:bg-gray-100 rounded-lg"
+                    className="block text-sm mt-3 hover:text-gray-500"
                   >
                     Create Account
                   </Link>
-
                 </>
-
               )}
 
             </div>
-
           )}
 
         </div>
-
       </div>
-
     </nav>
-
   )
 }
 
