@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar'
 
 function Checkout() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const navigate =useNavigate()
 
   const { items } = useSelector(state => state.cart)
   const { user } = useSelector(state => state.auth)
