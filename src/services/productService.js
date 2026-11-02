@@ -3,7 +3,6 @@ import api from './api'
 export const productService = {
   // Fetch all products
   getAll: () => api.get('/products'),
-
   // Fetch a single product by ID
   getById: (id) => api.get(`/products/${id}`),
 
