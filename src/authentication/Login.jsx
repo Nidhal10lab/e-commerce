@@ -7,10 +7,7 @@ function Login() {
   const [password, setPassword] = useState("")
   return (
     <div className="min-h-screen bg-[#F7F5F0] flex items-center justify-center p-5 md:p-10">
-      {/* Main box*/}
       <div className="w-full max-w-6xl min-h-[600px] grid grid-cols-1 md:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-xl">
-
-        {/* Left Side-Image */}
         <div
           className="hidden md:flex relative bg-cover bg-center"
           style={{ backgroundImage: `url(${bed})` }}
@@ -30,11 +27,7 @@ function Login() {
             </p>
           </div>
         </div>
-
-        {/* Right Side - Login Form */}
         <div className="flex flex-col justify-center items-center px-7 py-14 sm:px-14 lg:px-20 bg-[#F7F5F0]">
-
-          {/* Brand */}
           <div className="mb-10 text-center">
             <h1 className="text-4xl font-serif font-bold tracking-widest text-[#263D70]">
               FYNI
@@ -43,44 +36,26 @@ function Login() {
               SLEEP BETTER. LIVE BETTER.
             </p>
           </div>
-
-          {/* Heading */}
           <div className="w-full max-w-sm mb-8">
             <h2 className="text-3xl font-serif text-[#263D70]">
               Welcome Back
             </h2>
-
             <p className="text-gray-500 text-sm mt-2">
               Login to your account to continue.
             </p>
           </div>
-
-          {/* Form */}
           <form
             className="w-full max-w-sm space-y-5"
             onSubmit={(e) => {
               e.preventDefault()
-              // Add login functionality here
             }}
           >
-
-            {/* Email */}
             <div>
               <label className="block text-sm font-medium text-[#263D70] mb-2">
                 Email Address
-              </label>
-
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full border border-gray-300 bg-white rounded-xl px-4 py-3 text-sm outline-none transition focus:border-[#263D70] focus:ring-2 focus:ring-[#263D70]/10"
-              />
+              </label>              
+              <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}required className="w-full border border-gray-300 bg-white rounded-xl px-4 py-3 text-sm outline-none transition focus:border-[#263D70] focus:ring-2 focus:ring-[#263D70]/10"/>
             </div>
-
-            {/* Password */}
             <div>
               <label className="block text-sm font-medium text-[#263D70] mb-2">
                 Password

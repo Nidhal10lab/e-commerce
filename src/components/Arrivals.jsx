@@ -3,6 +3,7 @@ import multi from '../assets/multicolored.png'
 import fold from '../assets/foldable.png'
 import opill from '../assets/orthopillow.png'
 import spine from '../assets/spine.png'
+import {Link} from 'react-router-dom'
 function Arrivals(){
     const products=[
         {
@@ -39,9 +40,8 @@ return (
     Our New Arrivals
   </h1>
 
-  <button className="rounded-full bg-[#F7F5F0] px-6 py-3 font-['Poppins'] text-xl text-black transition-all duration-300 hover:bg-[#D6B982]">
-    Explore more →
-  </button>
+<Link to='products' className="rounded-full bg-[#F7F5F0] px-6 py-3 font-['Poppins'] text-xl text-black transition-all duration-300 hover:bg-[#D6B982]">
+    Explore more →</Link>
 </div>
 
       <div className="mx-auto grid  max-w-7xl gap-5 grid-cols-5">

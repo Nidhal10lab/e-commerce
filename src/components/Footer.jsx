@@ -24,7 +24,7 @@ const helpLinks = [
 
 function Footer() {
   return (
-    <footer className="bg-[#F7F5F0] font-['Poppins'] text-[#263D70]">
+    <footer className="bg-[#F7F5F0] font-['Poppins'] text-[#263D70]" id="footer">
 
       {/* Contact Section */}
       <section
