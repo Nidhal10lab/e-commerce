@@ -12,7 +12,6 @@ export const fetchOrdersByUser = createAsyncThunk(
     }
   }
 )
-
 // Place a new order
 export const placeOrder = createAsyncThunk(
   'orders/place',
