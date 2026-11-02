@@ -12,7 +12,7 @@ function Cart() {
   const subtotal = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity, 0
   )
-  const shipping = subtotal > 0 ? (subtotal >= 10000 ? 0 : 299) : 0
+  const shipping = subtotal > 0 ? (subtotal >= 10000 ? 0 : 299) :0
   const total = subtotal + shipping
 
   if (items.length === 0) {
