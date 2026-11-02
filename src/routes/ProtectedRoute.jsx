@@ -1,6 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
 /**
  * Wraps protected routes. Redirects to /login if not authenticated.
  * After login, returns user to the original attempted route.
