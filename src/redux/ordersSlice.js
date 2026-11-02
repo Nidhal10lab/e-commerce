@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { orderService } from '../services/orderService'
-
 // Fetch orders for a given user
 export const fetchOrdersByUser = createAsyncThunk(
   'orders/fetchByUser',
