@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Test User",
+      "email": "test@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "aaaa",
+      "email": "aa@gmail.com",
+      "password": "123456",
+      "id": "Yb2lFxvxX_U"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Fyni Comfort Mattress",
+      "category": "Memory Foam",
+      "description": "Experience premium comfort and excellent body support.",
+      "price": 12999,
+      "originalPrice": 15999,
+      "image": "/assets/mattress1.jpg",
+      "size": [
+        "Single",
+        "Queen",
+        "King"
+      ],
+      "stock": 20,
+      "rating": 4.5,
+      "featured": true
+    },
+    {
+      "id": "2",
+      "name": "Fyni Luxury Mattress",
+      "category": "Latex",
+      "description": "Enjoy luxurious comfort and restful sleep every night.",
+      "price": 18999,
+      "originalPrice": 21999,
+      "image": "/assets/mattress2.jpg",
+      "size": [
+        "Queen",
+        "King"
+      ],
+      "stock": 15,
+      "rating": 4.8,
+      "featured": true
+    },
+    {
+      "id": "3",
+      "name": "Fyni Classic Mattress",
+      "category": "Foam",
+      "description": "Everyday comfort designed for quality sleep.",
+      "price": 8999,
+      "originalPrice": 10999,
+      "image": "/assets/mattress3.jpg",
+      "size": [
+        "Single",
+        "Queen",
+        "King"
+      ],
+      "stock": 30,
+      "rating": 4.2,
+      "featured": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
