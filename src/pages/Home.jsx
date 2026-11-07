@@ -11,15 +11,13 @@ import Arrivals from "../components/Arrivals"
 import Footer from "../components/Footer"
 
 function Home() {
-
+  // useLocation is used to find the loction of url
   const location = useLocation()
-
   useEffect(() => {
     if (location.hash) {
       const section = document.getElementById(
         location.hash.substring(1)
       )
-
       section?.scrollIntoView({
         behavior: 'smooth'
       })

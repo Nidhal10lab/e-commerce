@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 
 function Cart() {
   const dispatch = useDispatch()
-  const { items } = useSelector(state => state.cart)
+  const { items } = useSelector(state => state.cart)  
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity, 0
@@ -92,7 +92,7 @@ function Cart() {
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-cent er justify-between mt-4">
                     {/* Quantity Controls */}
                     <div className="flex items-center gap-2">
                       <button

@@ -22,7 +22,7 @@ function Register() {
     }
   }, [isAuthenticated, navigate])
 
-  async function handleRegister(e) {
+async function handleRegister(e) {
     e.preventDefault()
     setError('')
 

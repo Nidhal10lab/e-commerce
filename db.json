@@ -5,6 +5,12 @@
       "name": "Test User",
       "email": "test@gmail.com",
       "password": "123456"
+    },
+    {
+      "name": "nidhal",
+      "email": "nidhal@gmail.com",
+      "password": "123456",
+      "id": "5dY86GN_mAQ"
     }
   ],
   "products": [
@@ -263,6 +269,62 @@
       "status": "Confirmed",
       "placedAt": "2026-11-02T07:03:58.338Z",
       "id": "Z1P5zlfwxzk"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 4,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "0987777gtry ",
+        "address": "wesdfrgthyjukilo;p[",
+        "city": "esfi",
+        "state": "asdfghjk",
+        "pincode": "7456sd76h"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 75996,
+      "shipping": 0,
+      "total": 75996,
+      "status": "Confirmed",
+      "placedAt": "2026-11-03T08:04:06.928Z",
+      "id": "6_bHSVGugG4"
+    },
+    {
+      "userId": "5dY86GN_mAQ",
+      "userEmail": "nidhal@gmail.com",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Fyni Comfort Mattress",
+          "selectedSize": "Single",
+          "quantity": 3,
+          "price": 12999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nidhal",
+        "phone": "69676766",
+        "address": "sffg",
+        "city": "tty",
+        "state": "rtyg",
+        "pincode": "76"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 38997,
+      "shipping": 0,
+      "total": 38997,
+      "status": "Confirmed",
+      "placedAt": "2026-11-03T10:43:20.868Z",
+      "id": "GTQLSP-K8Sc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
