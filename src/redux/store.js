@@ -12,4 +12,11 @@ export const store = configureStore({
     products: productsReducer,
     orders: ordersReducer,
   },
+  
+})
+
+store.subscribe(() => {
+  const wishlist = store.getState().wishlist.items
+
+  localStorage.setItem('wishlist', JSON.stringify(wishlist))
 })
