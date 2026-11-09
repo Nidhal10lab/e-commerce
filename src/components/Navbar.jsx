@@ -1,6 +1,6 @@
 import logo from '../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { Heart, ShoppingCart, UserRound, Package } from 'lucide-react'
+import { Heart, ShoppingCart, UserRound } from 'lucide-react'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../redux/authSlice'
@@ -9,18 +9,20 @@ import { clearCart } from '../redux/cartSlice'
 
 function Navbar() {
   const [showDropdown, setShowDropdown] = useState(false)
-
+  
+  // useSelector is a Redux hook used to access data stored in the Redux store.
   const { user, isAuthenticated } = useSelector(state => state.auth)
   const wishlistItems = useSelector(state => state.wishlist.items)
   const cartItems = useSelector(state => state.cart.items)
 
+// useDispatch() is a Redux hook used to send actions to the Redux store.
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   function handleLogout() {
-    dispatch(logout())
+    dispatch(logout()) 
     dispatch(clearWishlist())
     dispatch(clearCart())
     setShowDropdown(false)
@@ -29,18 +31,13 @@ function Navbar() {
 
   return (
     <nav className="relative border-2 rounded-xl flex justify-between items-center px-4 bg-[#2C4179] m-3 py-3">
-
-      {/* Logo */}
+     {/* left side logo */}
       <Link to="/">
-        <img
-          src={logo}
-          alt="FYNI Logo"
-          className="w-30"
-        />
+        <img src={logo} alt="FYNI Logo" className="w-30"/>
       </Link>
 
       {/* Center Links */}
-      <div className="flex gap-6 text-white">
+      <div className="flex gap-6 text-white text-[15px]">
         <Link to="/" className="hover:text-gray-300">
           Home
         </Link>
@@ -63,10 +60,10 @@ function Navbar() {
 
         {/* Wishlist */}
         <Link to="/wishlist" className="relative">
-          <Heart size={25} className="text-white" />
+          <Heart size={25} className="text-white hover:text-gray-300" />
 
           {wishlistItems.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-amber-400 text-[#263D70] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+            <span className="absolute -top-2 -right-2 bg-amber-400 text-[#263D70] text-xs rounded-full w-5 h-5 flex items-center justify-center font-bol">
               {wishlistItems.length}
             </span>
           )}
@@ -111,15 +108,6 @@ function Navbar() {
 
                   <hr className="my-3" />
 
-                  <Link
-                    to="/orders"
-                    onClick={() => setShowDropdown(false)}
-                    className="flex items-center gap-2 text-sm hover:text-[#A47B3C] mb-3"
-                  >
-                    <Package size={15} />
-                    My Orders
-                  </Link>
-
                   <button
                     onClick={handleLogout}
                     className="w-full text-left text-sm text-red-600 hover:text-red-800"
@@ -137,13 +125,7 @@ function Navbar() {
                     Login
                   </Link>
 
-                  <Link
-                    to="/register"
-                    onClick={() => setShowDropdown(false)}
-                    className="block text-sm mt-3 hover:text-gray-500"
-                  >
-                    Create Account
-                  </Link>
+                  
                 </>
               )}
 
