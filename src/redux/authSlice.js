@@ -16,6 +16,7 @@ const authSlice = createSlice({
     user: parsedUser,
     isAuthenticated: !!parsedUser,
   },
+  // Reducers are functions responsible for updating the Redux state.
   reducers: {
     loginSuccess: (state, action) => {
       state.user = action.payload
