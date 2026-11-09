@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar'
 function Wishlist() {
   const dispatch = useDispatch()
   const { items } = useSelector(state => state.wishlist)
-  const { isAuthenticated } = useSelector(state => state.auth)
 
   function handleMoveToCart(product) {
     const defaultSize = product.sizes?.[0] || 'Standard'
@@ -35,7 +34,7 @@ function Wishlist() {
       </div>
     )
   }
-
+  
   return (
     <div className="min-h-screen bg-[#F7F5F0] font-['Poppins']">
       <Navbar />
@@ -96,7 +95,7 @@ function Wishlist() {
 
               {/* Actions */}
               <div className="mt-4 flex flex-col gap-2">
-                {isAuthenticated ? (
+               
                   <button
                     onClick={() => handleMoveToCart(product)}
                     className="w-full flex items-center justify-center gap-2 bg-[#263D70] text-white py-2.5 rounded-xl text-sm font-medium hover:bg-[#1D2F57] transition"
@@ -104,14 +103,6 @@ function Wishlist() {
                     <ShoppingCart size={16} />
                     Move to Cart
                   </button>
-                ) : (
-                  <Link
-                    to="/login"
-                    className="w-full flex items-center justify-center gap-2 bg-[#263D70] text-white py-2.5 rounded-xl text-sm font-medium hover:bg-[#1D2F57] transition"
-                  >
-                    Login to Add to Cart
-                  </Link>
-                )}
 
                 <button
                   onClick={() => dispatch(removeFromWishlist(product.id))}
