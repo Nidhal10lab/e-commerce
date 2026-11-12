@@ -8,4 +8,13 @@ export const orderService = {
 
   // Get single order
   getById: (id) => api.get(`/orders/${id}`),
+
+  // Get all orders (for admin)
+  getAll: () => api.get('/orders'),
+
+  // Update order status
+  updateStatus: (id, status) => api.patch(`/orders/${id}`, { status }),
+
+  // Delete order
+  delete: (id) => api.delete(`/orders/${id}`),
 }

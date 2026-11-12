@@ -1,8 +1,9 @@
 import bed from '../assets/bedimg.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { userService } from '../services/userService'
+import { showToast } from '../redux/toastSlice'
 
 function Register() {
 
@@ -14,6 +15,7 @@ function Register() {
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { isAuthenticated } = useSelector(state => state.auth)
 
   useEffect(() => {
@@ -27,12 +29,16 @@ async function handleRegister(e) {
     setError('')
 
     if (password.length < 6) {
-      setError('Password must contain at least 6 characters')
+      const msg = 'Password must contain at least 6 characters'
+      setError(msg)
+      dispatch(showToast(msg, 'error'))
       return
     }
 
     if (password !== cpassword) {
-      setError('Passwords do not match')
+      const msg = 'Passwords do not match'
+      setError(msg)
+      dispatch(showToast(msg, 'error'))
       return
     }
 
@@ -42,7 +48,9 @@ async function handleRegister(e) {
       const response = await userService.getByEmail(email)
 
       if (response.data.length > 0) {
-        setError('Email already registered. Please login.')
+        const msg = 'Email already registered. Please login.'
+        setError(msg)
+        dispatch(showToast(msg, 'error'))
         return
       }
 
@@ -50,8 +58,10 @@ async function handleRegister(e) {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         password: password,
+        isBlocked: false,
       })
 
+      dispatch(showToast('Account registered successfully! Please login.', 'success'))
       navigate('/login')
 
     } catch (err) {

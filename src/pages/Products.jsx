@@ -4,6 +4,7 @@ import { Heart, ShoppingCart, X, Star, Search, SlidersHorizontal, ChevronLeft, C
 import { addToWishlist, removeFromWishlist } from '../redux/wishlistSlice'
 import { addToCart } from '../redux/cartSlice'
 import { fetchProducts } from '../redux/productsSlice'
+import { showToast } from '../redux/toastSlice'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const ITEMS_PER_PAGE = 6
@@ -131,8 +132,10 @@ function Products() {
     const isLiked = wishlistItems.some(item => item.id === product.id)
     if (isLiked) {
       dispatch(removeFromWishlist(product.id))
+      dispatch(showToast(`Removed "${product.name}" from wishlist`, 'info'))
     } else {
       dispatch(addToWishlist(product))
+      dispatch(showToast(`Added "${product.name}" to wishlist`, 'success'))
     }
   }
 
@@ -144,6 +147,7 @@ function Products() {
       selectedSize,
       quantity,
     }))
+    dispatch(showToast(`Added "${selectedProduct.name}" (${selectedSize} × ${quantity}) to your cart!`, 'success'))
     setAddedToCart(true)
   }
 
@@ -241,11 +245,10 @@ function Products() {
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition ${
-                category === cat
+              className={`px-4 py-2 rounded-full text-xs font-medium transition ${category === cat
                   ? 'bg-[#D8B77D] text-[#263D70]'
                   : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -304,7 +307,7 @@ function Products() {
 
             {paginated.map(product => {
               const isLiked = wishlistItems.some(item => item.id === product.id)
-              const isOutOfStock = product.stock === 0
+              const isOutOfStock = product.stock === 0 || Boolean(product.isSoftDeleted)
 
               return (
                 <div
@@ -403,11 +406,10 @@ function Products() {
                 <button
                   key={n}
                   onClick={() => setPage(n)}
-                  className={`w-9 h-9 rounded-full text-sm font-medium transition ${
-                    page === n
+                  className={`w-9 h-9 rounded-full text-sm font-medium transition ${page === n
                       ? 'bg-[#D8B77D] text-[#263D70]'
                       : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
+                    }`}
                 >
                   {n}
                 </button>
@@ -486,7 +488,7 @@ function Products() {
               </div>
 
               {/* Out of Stock */}
-              {selectedProduct.stock === 0 ? (
+              {selectedProduct.stock === 0 || selectedProduct.isSoftDeleted ? (
                 <span className="mt-3 inline-block text-sm text-red-600 font-semibold">
                   ❌ Out of Stock
                 </span>
@@ -526,11 +528,10 @@ function Products() {
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`px-4 py-2 rounded-lg border text-sm font-medium transition ${
-                          selectedSize === size
+                        className={`px-4 py-2 rounded-lg border text-sm font-medium transition ${selectedSize === size
                             ? 'bg-[#263D70] text-white border-[#263D70]'
                             : 'bg-white text-[#263D70] border-gray-300 hover:border-[#263D70]'
-                        }`}
+                          }`}
                       >
                         {size}
                       </button>
@@ -566,12 +567,11 @@ function Products() {
                 {isAuthenticated ? (
                   <button
                     onClick={handleAddToCart}
-                    disabled={selectedProduct.stock === 0 || !selectedSize}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition ${
-                      addedToCart
+                    disabled={selectedProduct.stock === 0 || selectedProduct.isSoftDeleted || !selectedSize}
+                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition ${addedToCart
                         ? 'bg-green-600 text-white'
                         : 'bg-[#263D70] text-white hover:bg-[#1D2F57]'
-                    } disabled:opacity-50`}
+                      } disabled:opacity-50`}
                   >
                     <ShoppingCart size={18} />
                     {addedToCart ? 'Added to Cart ✓' : 'Add to Cart'}
@@ -588,11 +588,10 @@ function Products() {
                 {/* Wishlist */}
                 <button
                   onClick={() => handleWishlist(selectedProduct)}
-                  className={`p-3 rounded-xl border-2 transition ${
-                    wishlistItems.some(item => item.id === selectedProduct.id)
+                  className={`p-3 rounded-xl border-2 transition ${wishlistItems.some(item => item.id === selectedProduct.id)
                       ? 'border-red-400 bg-red-50'
                       : 'border-gray-300 bg-white hover:border-[#263D70]'
-                  }`}
+                    }`}
                 >
                   <Heart
                     size={20}

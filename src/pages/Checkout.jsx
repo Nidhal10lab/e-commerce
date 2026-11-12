@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { clearCart } from '../redux/cartSlice'
 import { placeOrder } from '../redux/ordersSlice'
-import { CheckCircle, ChevronRight, MapPin } from 'lucide-react'
+import { showToast } from '../redux/toastSlice'
+import { CheckCircle, CheckCircle2, ChevronRight, MapPin, Clock, Truck, PackageCheck } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
 function Checkout() {
@@ -25,7 +26,19 @@ function Checkout() {
   })
 
   const [orderPlaced, setOrderPlaced] = useState(false)
+  const [countdown, setCountdown] = useState(5)
   const [error, setError] = useState('')
+
+  // Auto-redirect to /orders after countdown when order is placed
+  useEffect(() => {
+    if (!orderPlaced) return
+    if (countdown <= 0) {
+      navigate('/orders')
+      return
+    }
+    const t = setTimeout(() => setCountdown(c => c - 1), 1000)
+    return () => clearTimeout(t)
+  }, [orderPlaced, countdown, navigate])
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity, 0
@@ -75,35 +88,103 @@ function Checkout() {
     try {
       await dispatch(placeOrder(orderData)).unwrap()
       dispatch(clearCart())
+      dispatch(showToast('Order placed successfully!', 'success'))
       setOrderPlaced(true)
     } catch {
       setError('Failed to place order. Please try again.')
+      dispatch(showToast('Failed to place order. Please try again.', 'error'))
     }
   }
+
+  const TRACK_STEPS = [
+    { key: 'Confirmed', label: 'Order Confirmed', icon: CheckCircle2, eta: 'Today' },
+    { key: 'Processing', label: 'Processing', icon: Clock, eta: 'Day 1–2' },
+    { key: 'Shipped', label: 'Shipped', icon: Truck, eta: 'Day 2–5' },
+    { key: 'Delivered', label: 'Delivered', icon: PackageCheck, eta: 'Day 5–7' },
+  ]
 
   if (orderPlaced) {
     return (
       <div className="min-h-screen bg-[#F7F5F0] font-['Poppins']">
         <Navbar />
-        <div className="flex flex-col items-center justify-center py-24 px-6 text-center">
-          <CheckCircle size={80} className="text-green-500 mb-6" />
-          <h2 className="text-3xl font-semibold text-[#263D70]">Order Placed!</h2>
-          <p className="text-gray-500 mt-3 max-w-md">
-            Thank you for your order! We'll notify you once it's shipped.
-          </p>
-          <div className="flex gap-4 mt-8">
-            <button
-              onClick={() => navigate('/orders')}
-              className="bg-[#263D70] text-white px-7 py-3 rounded-full text-sm font-medium hover:bg-[#1D2F57] transition"
-            >
-              View Orders
-            </button>
-            <button
-              onClick={() => navigate('/products')}
-              className="border border-[#263D70] text-[#263D70] px-7 py-3 rounded-full text-sm font-medium hover:bg-[#263D70]/5 transition"
-            >
-              Continue Shopping
-            </button>
+        <div className="flex flex-col items-center justify-center py-16 px-4">
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-100 max-w-lg w-full p-8 text-center">
+
+            {/* Success icon + heading */}
+            <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-5">
+              <CheckCircle size={48} className="text-emerald-500" />
+            </div>
+            <h2 className="text-2xl font-bold text-[#263D70]">Order Placed! 🎉</h2>
+            <p className="text-gray-500 mt-2 text-sm leading-relaxed">
+              Thank you for your purchase. Your order is confirmed and we're getting it ready for you.
+            </p>
+
+            {/* Mini Order Tracker */}
+            <div className="mt-8 p-5 bg-[#F7F5F0] rounded-2xl text-left">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-5 text-center">
+                Order Tracking
+              </p>
+
+              <div className="relative flex items-start justify-between">
+                {/* Background track */}
+                <div className="absolute top-4 left-4 right-4 h-1 bg-gray-200" />
+                {/* Active track — only first step is active */}
+                <div className="absolute top-4 left-4 h-1 bg-emerald-500" style={{ width: '0%' }} />
+
+                {TRACK_STEPS.map((step, idx) => {
+                  const Icon = step.icon
+                  const isDone = idx === 0
+                  const isCurrent = idx === 0
+                  return (
+                    <div key={step.key} className="relative z-10 flex flex-col items-center text-center w-1/4">
+                      <div className={`w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition ${
+                        isDone
+                          ? 'bg-emerald-600 text-white ring-4 ring-emerald-50'
+                          : 'bg-white text-gray-300 border-2 border-gray-200'
+                      }`}>
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className={`mt-2 text-[10px] font-semibold leading-tight ${
+                        isCurrent ? 'text-emerald-700' : 'text-gray-400'
+                      }`}>
+                        {step.label}
+                      </span>
+                      <span className="text-[9px] text-gray-400 mt-0.5">{step.eta}</span>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Currently Here pill */}
+              <div className="mt-5 flex justify-center">
+                <span className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Currently: Order Confirmed ✓
+                </span>
+              </div>
+            </div>
+
+            {/* Auto-redirect notice */}
+            <p className="text-xs text-gray-400 mt-5">
+              Redirecting to your orders in <span className="font-bold text-[#263D70]">{countdown}s</span>…
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 mt-5">
+              <button
+                onClick={() => navigate('/orders')}
+                className="flex-1 bg-[#263D70] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#1D2F57] transition flex items-center justify-center gap-2"
+              >
+                <Truck size={16} />
+                Track My Order
+              </button>
+              <button
+                onClick={() => navigate('/products')}
+                className="flex-1 border border-[#263D70] text-[#263D70] py-3 rounded-xl text-sm font-semibold hover:bg-[#263D70]/5 transition"
+              >
+                Continue Shopping
+              </button>
+            </div>
           </div>
         </div>
       </div>

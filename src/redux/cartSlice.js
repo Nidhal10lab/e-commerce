@@ -1,8 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
+
+let savedCart = []
+try {
+  const stored = localStorage.getItem('cart')
+  if (stored && stored !== 'undefined') {
+    savedCart = JSON.parse(stored) || []
+  }
+} catch {
+  savedCart = []
+}
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: [],
+    items: savedCart,
   },
   reducers: {
     addToCart: (state, action) => {

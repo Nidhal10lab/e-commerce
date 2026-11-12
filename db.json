@@ -4,19 +4,22 @@
       "id": "1",
       "name": "Test User",
       "email": "test@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "isBlocked": false
     },
     {
       "name": "nidhal",
       "email": "nidhal@gmail.com",
       "password": "123456",
-      "id": "5dY86GN_mAQ"
+      "id": "5dY86GN_mAQ",
+      "isBlocked": false
     },
     {
       "name": "shamil",
       "email": "shamil@gmail.com",
       "password": "123456",
-      "id": "Azbn-7hqwT8"
+      "id": "Azbn-7hqwT8",
+      "isBlocked": false
     }
   ],
   "products": [
@@ -33,14 +36,15 @@
         "Queen",
         "King"
       ],
-      "stock": 20,
+      "stock": 15,
       "rating": 4.5,
       "featured": true,
       "features": [
         "Memory Foam",
         "Body Support",
         "Pressure Relief"
-      ]
+      ],
+      "isSoftDeleted": false
     },
     {
       "id": "2",
@@ -76,14 +80,15 @@
         "Queen",
         "King"
       ],
-      "stock": 30,
+      "stock": 0,
       "rating": 4.2,
       "featured": false,
       "features": [
         "High Density Foam",
         "Long Lasting",
         "Easy Care"
-      ]
+      ],
+      "isSoftDeleted": true
     },
     {
       "id": "4",
@@ -331,7 +336,149 @@
       "status": "Confirmed",
       "placedAt": "2026-11-03T10:43:20.868Z",
       "id": "GTQLSP-K8Sc"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "5",
+          "productName": "Multi-colored Pillow",
+          "selectedSize": "Standard",
+          "quantity": 5,
+          "price": 999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "588512520525",
+        "address": "p,0io,kio09j",
+        "city": "oijk90",
+        "state": "nm0hjun890u",
+        "pincode": "123698"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 4995,
+      "shipping": 299,
+      "total": 5294,
+      "status": "Cancelled",
+      "placedAt": "2026-11-11T05:01:30.688Z",
+      "id": "ZWiVzhE0g24"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "2343244242",
+        "address": "dsafsfsdfsffdsfs",
+        "city": "fsfsddsfsd",
+        "state": "sfdsf",
+        "pincode": "d23e242"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-11T18:06:31.110Z",
+      "id": "Bzx2M6_1Qyw"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "fdgdvg",
+        "address": "sfg",
+        "city": "gsfrg",
+        "state": "sdgsg",
+        "pincode": "sgdgsdfg"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-12T03:53:36.730Z",
+      "id": "Z2xsX3iSL44"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 2,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "dsffs",
+        "address": "dfasf",
+        "city": "f",
+        "state": "f",
+        "pincode": "f"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 37998,
+      "shipping": 0,
+      "total": 37998,
+      "status": "Confirmed",
+      "placedAt": "2026-11-12T04:02:47.317Z",
+      "id": "eKUB15j0TEk"
+    },
+    {
+      "userId": "1",
+      "userEmail": "test@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Test User",
+        "phone": "bg",
+        "address": "bg",
+        "city": "gh",
+        "state": "gh",
+        "pincode": "gh"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-12T04:03:49.330Z",
+      "id": "-zelGKTTD84"
     }
   ],
+  "wishlist": [],
+  "cart": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

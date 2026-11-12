@@ -18,4 +18,16 @@ export const productService = {
   // Paginated products
   getPaginated: (page = 1, limit = 8) =>
     api.get('/products', { params: { _page: page, _per_page: limit } }),
+
+  // Create a new product
+  create: (productData) => api.post('/products', productData),
+
+  // Update existing product
+  update: (id, productData) => api.put(`/products/${id}`, productData),
+
+  // Partially update existing product
+  patch: (id, productData) => api.patch(`/products/${id}`, productData),
+
+  // Delete product
+  delete: (id) => api.delete(`/products/${id}`),
 }

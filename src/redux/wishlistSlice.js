@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 let savedWishlist = []
 try {
-  savedWishlist = JSON.parse(localStorage.getItem('wishlist')) || []
+  const stored = localStorage.getItem('wishlist')
+  if (stored && stored !== 'undefined') {
+    savedWishlist = JSON.parse(stored) || []
+  }
 } catch {
   savedWishlist = []
 }
