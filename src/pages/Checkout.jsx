@@ -36,6 +36,7 @@ function Checkout() {
       navigate('/orders')
       return
     }
+     
     const t = setTimeout(() => setCountdown(c => c - 1), 1000)
     return () => clearTimeout(t)
   }, [orderPlaced, countdown, navigate])
@@ -90,6 +91,7 @@ function Checkout() {
       dispatch(clearCart())
       dispatch(showToast('Order placed successfully!', 'success'))
       setOrderPlaced(true)
+      
     } catch {
       setError('Failed to place order. Please try again.')
       dispatch(showToast('Failed to place order. Please try again.', 'error'))

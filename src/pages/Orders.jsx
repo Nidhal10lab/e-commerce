@@ -53,7 +53,13 @@ function OrderTracker({ status }) {
       </div>
     )
   }
-
+ if (user.isBlocked) {
+        const msg =
+          'Your account has been suspended by the administrator. Please contact support.'
+        setError(msg)
+        dispatch(showToast(msg, 'error'))
+        return
+      }
   const currentStepLabel = STATUS_STEPS[currentStep]?.label || 'Confirmed'
 
   return (

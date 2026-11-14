@@ -20,21 +20,29 @@
       "password": "123456",
       "id": "Azbn-7hqwT8",
       "isBlocked": false
+    },
+    {
+      "name": "nid",
+      "email": "nid@gmail.com",
+      "password": "123456",
+      "isBlocked": true,
+      "id": "S8XQsnVqFKc"
     }
   ],
   "products": [
     {
       "id": "1",
-      "name": "Fyni Comfort Mattress",
-      "category": "Memory Foam",
+      "name": "Fyni Comfort",
+      "category": "Foam",
       "description": "Experience premium comfort and excellent body support with our specially engineered memory foam mattress. Perfect for all sleep positions.",
-      "price": 12999,
-      "originalPrice": 15999,
+      "price": 1299,
+      "originalPrice": 1599,
       "image": "/images/mattress.jpg",
       "sizes": [
         "Single",
         "Queen",
-        "King"
+        "King",
+        "Standard"
       ],
       "stock": 15,
       "rating": 4.5,
@@ -103,14 +111,15 @@
         "Queen",
         "King"
       ],
-      "stock": 12,
+      "stock": 0,
       "rating": 4.7,
       "featured": true,
       "features": [
         "Back Support",
         "Premium Foam",
         "Long Lasting"
-      ]
+      ],
+      "isSoftDeleted": true
     },
     {
       "id": "5",
@@ -194,6 +203,30 @@
         "Soft Feel",
         "Premium Quality"
       ]
+    },
+    {
+      "name": "mattress",
+      "category": "Foam",
+      "description": "best for backpain",
+      "price": 30000,
+      "originalPrice": 50000,
+      "image": "/images/mattress.jpg",
+      "sizes": [
+        "Single",
+        "Queen",
+        "King",
+        "Double"
+      ],
+      "stock": 14,
+      "rating": 4.5,
+      "featured": false,
+      "isSoftDeleted": false,
+      "features": [
+        "Premium Comfort",
+        "Superior Support",
+        "Breathable Material"
+      ],
+      "id": "PMbbO3qt6nw"
     }
   ],
   "orders": [
@@ -476,6 +509,174 @@
       "status": "Confirmed",
       "placedAt": "2026-11-12T04:03:49.330Z",
       "id": "-zelGKTTD84"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "232434",
+        "address": "fsfsfsdf",
+        "city": "dfsf45345",
+        "state": "dfsdf",
+        "pincode": "3454"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:37:08.650Z",
+      "id": "KdOWbCIH1P4"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Fyni Comfort",
+          "selectedSize": "Single",
+          "quantity": 1,
+          "price": 1299
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "53535353533",
+        "address": "js,dufhfsfd",
+        "city": "kozhikode",
+        "state": "kerala",
+        "pincode": "234576"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 1299,
+      "shipping": 299,
+      "total": 1598,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:44:38.810Z",
+      "id": "qmLbSRI0jZA"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Fyni Comfort",
+          "selectedSize": "Single",
+          "quantity": 1,
+          "price": 1299
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "4354345",
+        "address": "edadfds",
+        "city": "kog",
+        "state": "kera",
+        "pincode": "123456"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 1299,
+      "shipping": 299,
+      "total": 1598,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:47:32.466Z",
+      "id": "oSLi6cg62mY"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "ffsd",
+        "address": "dfsfd",
+        "city": "df",
+        "state": "dsffdsf3r",
+        "pincode": "4rwerw"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:52:33.517Z",
+      "id": "dtRmfqD5Ofs"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "fsfsffsfs",
+        "address": "fsdfds",
+        "city": "dsf",
+        "state": "ddssd",
+        "pincode": "43425"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:54:53.536Z",
+      "id": "5q_KetTr1b8"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 1,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "4443",
+        "address": "wefw",
+        "city": "df",
+        "state": "sfd",
+        "pincode": "43"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 18999,
+      "shipping": 0,
+      "total": 18999,
+      "status": "Confirmed",
+      "placedAt": "2026-11-14T05:57:14.250Z",
+      "id": "xocii2T0a5w"
     }
   ],
   "wishlist": [],

@@ -13,7 +13,6 @@ const CATEGORIES = ['All', 'Memory Foam', 'Latex', 'Foam', 'Orthopedic', 'Pillow
 const SORT_OPTIONS = [
   { label: 'Default', value: 'default' },
   { label: 'Price: Low to High', value: 'price_asc' },
-  { label: 'Price: High to Low', value: 'price_desc' },
   { label: 'Rating', value: 'rating' },
 ]
 
@@ -111,9 +110,8 @@ function Products() {
 
     if (sort === 'price_asc') {
       result.sort((a, b) => a.price - b.price)
-    } else if (sort === 'price_desc') {
-      result.sort((a, b) => b.price - a.price)
-    } else if (sort === 'rating') {
+    } 
+    else if (sort === 'rating') {
       result.sort((a, b) => b.rating - a.rating)
     }
 
