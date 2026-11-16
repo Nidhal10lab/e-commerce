@@ -22,7 +22,7 @@ function Offer() {
       </p>
 
       <Link
-        to="/products"
+        to="/offer"
         className="inline-block mb-10 ml-20 px-10 py-5 m-3 rounded-3xl font-bold bg-[#263D70] text-white text-xl hover:bg-[#1D2F57] transition"
       >
         Explore Offers →

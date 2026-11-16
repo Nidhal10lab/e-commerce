@@ -9,6 +9,7 @@ import Wishlist from './pages/Wishlist'
 import Login from './authentication/Login'
 import Register from './authentication/Registration'
 import ProtectedRoute from './routes/ProtectedRoute'
+import Offer from './pages/Offer'
 
 // Admin Components
 import AdminRoute from './admin/routes/AdminRoute'
@@ -32,6 +33,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/offer" element={<Offer />} />
+
 
         {/* Protected Customer Routes */}
         <Route

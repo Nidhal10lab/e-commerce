@@ -35,8 +35,8 @@
       "name": "Fyni Comfort",
       "category": "Foam",
       "description": "Experience premium comfort and excellent body support with our specially engineered memory foam mattress. Perfect for all sleep positions.",
-      "price": 1299,
-      "originalPrice": 1599,
+      "price": 129,
+      "originalPrice": 1299,
       "image": "/images/mattress.jpg",
       "sizes": [
         "Single",
@@ -59,28 +59,29 @@
       "name": "Fyni Luxury Mattress",
       "category": "Latex",
       "description": "Enjoy luxurious comfort and restful sleep every night with our premium latex mattress that provides superior bounce and breathability.",
-      "price": 18999,
+      "price": 21999,
       "originalPrice": 21999,
       "image": "/images/mattress.jpg",
       "sizes": [
         "Queen",
         "King"
       ],
-      "stock": 15,
+      "stock": 0,
       "rating": 4.8,
       "featured": true,
       "features": [
         "Natural Latex",
         "Breathable",
         "Hypoallergenic"
-      ]
+      ],
+      "isSoftDeleted": true
     },
     {
       "id": "3",
       "name": "Fyni Classic Mattress",
       "category": "Foam",
       "description": "Everyday comfort designed for quality sleep. Our classic foam mattress offers reliable support at an affordable price.",
-      "price": 8999,
+      "price": 10999,
       "originalPrice": 10999,
       "image": "/images/mattress.jpg",
       "sizes": [
@@ -103,7 +104,7 @@
       "name": "Orthopedic Mattress",
       "category": "Orthopedic",
       "description": "Experience superior comfort and support with our orthopedic mattress. Designed to support your body and promote restful sleep.",
-      "price": 14999,
+      "price": 17999,
       "originalPrice": 17999,
       "image": "/images/ortho.png",
       "sizes": [
@@ -127,7 +128,7 @@
       "category": "Pillow",
       "description": "Add comfort and style to your sleeping space with our soft and comfortable pillows. Available in vibrant colors.",
       "price": 999,
-      "originalPrice": 1499,
+      "originalPrice": 9992,
       "image": "/images/multicolored.png",
       "sizes": [
         "Standard",
@@ -140,7 +141,8 @@
         "Soft Comfort",
         "Premium Fabric",
         "Easy Care"
-      ]
+      ],
+      "isSoftDeleted": false
     },
     {
       "id": "6",
@@ -148,7 +150,7 @@
       "category": "Foam",
       "description": "A convenient foldable mattress that combines comfort and flexibility. Perfect for everyday use and guests.",
       "price": 4999,
-      "originalPrice": 6999,
+      "originalPrice": 4999,
       "image": "/images/foldable.png",
       "sizes": [
         "Single",
@@ -161,14 +163,15 @@
         "Space Saving",
         "Easy Storage",
         "Flexible Design"
-      ]
+      ],
+      "isSoftDeleted": false
     },
     {
       "id": "7",
       "name": "Spine Alignment Pillow",
       "category": "Pillow",
       "description": "Designed to provide comfortable support and help maintain proper sleeping posture for a healthier spine.",
-      "price": 1499,
+      "price": 1999,
       "originalPrice": 1999,
       "image": "/images/spine.png",
       "sizes": [
@@ -181,14 +184,15 @@
         "Neck Support",
         "Ergonomic Design",
         "Soft Material"
-      ]
+      ],
+      "isSoftDeleted": false
     },
     {
       "id": "8",
       "name": "Orthopedic Pillow",
       "category": "Pillow",
       "description": "Enjoy a comfortable sleeping experience with supportive cushioning designed for everyday relaxation.",
-      "price": 1299,
+      "price": 1799,
       "originalPrice": 1799,
       "image": "/images/orthopillow.png",
       "sizes": [
@@ -202,13 +206,14 @@
         "Body Support",
         "Soft Feel",
         "Premium Quality"
-      ]
+      ],
+      "isSoftDeleted": false
     },
     {
       "name": "mattress",
       "category": "Foam",
       "description": "best for backpain",
-      "price": 30000,
+      "price": 50000,
       "originalPrice": 50000,
       "image": "/images/mattress.jpg",
       "sizes": [
@@ -227,6 +232,29 @@
         "Breathable Material"
       ],
       "id": "PMbbO3qt6nw"
+    },
+    {
+      "name": "nx ksx ksnxj",
+      "category": "Memory Foam",
+      "description": "sxs",
+      "price": 1000,
+      "originalPrice": 1000,
+      "image": "/images/mattress.jpg",
+      "sizes": [
+        "Single",
+        "Queen",
+        "King"
+      ],
+      "stock": 20,
+      "rating": 4.5,
+      "featured": false,
+      "isSoftDeleted": false,
+      "features": [
+        "Premium Comfort",
+        "Superior Support",
+        "Breathable Material"
+      ],
+      "id": "nK1elrEZFJE"
     }
   ],
   "orders": [
