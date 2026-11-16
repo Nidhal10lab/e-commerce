@@ -40,7 +40,7 @@ function Products() {
   const { items: allProducts, loading, error } = useSelector(state => state.products)
   const wishlistItems = useSelector(state => state.wishlist.items)
   const cartItems = useSelector(state => state.cart.items)
-  const { isAuthenticated } = useSelector(state => state.auth)
+  const { isAuthenticated, user } = useSelector(state => state.auth)
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -127,6 +127,11 @@ function Products() {
       return
     }
 
+    if (user?.isBlocked) {
+      dispatch(showToast('Your account is suspended. You cannot add items to wishlist.', 'error'))
+      return
+    }
+
     const isLiked = wishlistItems.some(item => item.id === product.id)
     if (isLiked) {
       dispatch(removeFromWishlist(product.id))
@@ -139,6 +144,11 @@ function Products() {
 
   function handleAddToCart() {
     if (!selectedSize) return
+
+    if (user?.isBlocked) {
+      dispatch(showToast('Your account is suspended. You cannot add items to cart.', 'error'))
+      return
+    }
 
     dispatch(addToCart({
       product: selectedProduct,

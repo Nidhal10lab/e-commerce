@@ -6,12 +6,14 @@ import { loginSuccess } from '../redux/authSlice'
 import { adminLoginSuccess } from '../redux/adminAuthSlice'
 import { showToast } from '../redux/toastSlice'
 import { userService } from '../services/userService'
+import { ShieldAlert } from 'lucide-react'
 
 function Login() {
-  const [email, setEmail] = useState('')
+  const [email,    setEmail]    = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [error,    setError]    = useState('')
+  const [blocked,  setBlocked]  = useState(false)
+  const [loading,  setLoading]  = useState(false)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -35,6 +37,7 @@ function Login() {
   async function handleLogin(e) {
     e.preventDefault()
     setError('')
+    setBlocked(false)
 
     const cleanEmail = email.trim().toLowerCase()
     const cleanPassword = password.trim()
@@ -81,8 +84,8 @@ function Login() {
 
       // Check if user is blocked by Admin
       if (user.isBlocked) {
-        const msg =
-          'Your account has been suspended by the administrator. Please contact support.'
+        setBlocked(true)
+        const msg = 'Your account has been suspended by the administrator. Please contact support.'
         setError(msg)
         dispatch(showToast(msg, 'error'))
         return
@@ -191,7 +194,19 @@ function Login() {
             </div>
 
             {/* Error */}
-            {error && <p className="text-rose-500 text-xs">{error}</p>}
+            {error && (
+              blocked ? (
+                <div className="flex items-start gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl">
+                  <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold text-rose-700 uppercase tracking-wide mb-0.5">Account Suspended</p>
+                    <p className="text-xs text-rose-600 leading-relaxed">{error}</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-rose-500 text-xs">{error}</p>
+              )
+            )}
 
             {/* Login Button */}
             <button

@@ -25,7 +25,7 @@
       "name": "nid",
       "email": "nid@gmail.com",
       "password": "123456",
-      "isBlocked": true,
+      "isBlocked": false,
       "id": "S8XQsnVqFKc"
     }
   ],
@@ -646,7 +646,7 @@
       "subtotal": 18999,
       "shipping": 0,
       "total": 18999,
-      "status": "Confirmed",
+      "status": "Cancelled",
       "placedAt": "2026-11-14T05:54:53.536Z",
       "id": "5q_KetTr1b8"
     },
@@ -674,9 +674,37 @@
       "subtotal": 18999,
       "shipping": 0,
       "total": 18999,
-      "status": "Confirmed",
+      "status": "Shipped",
       "placedAt": "2026-11-14T05:57:14.250Z",
       "id": "xocii2T0a5w"
+    },
+    {
+      "userId": "S8XQsnVqFKc",
+      "userEmail": "nid@gmail.com",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Fyni Luxury Mattress",
+          "selectedSize": "Queen",
+          "quantity": 2,
+          "price": 18999
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "nid",
+        "phone": "8512520525",
+        "address": "p,0io,kio09j",
+        "city": "zasdfgh",
+        "state": "asdf",
+        "pincode": "123698"
+      },
+      "paymentMethod": "COD",
+      "subtotal": 37998,
+      "shipping": 0,
+      "total": 37998,
+      "status": "Confirmed",
+      "placedAt": "2026-11-16T02:30:29.940Z",
+      "id": "9UgiHwFSblY"
     }
   ],
   "wishlist": [],
